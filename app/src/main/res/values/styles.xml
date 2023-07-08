@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="ButtonChooseLevel">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:layout_marginStart">@dimen/margin_button_from_parent_normal</item>
+        <item name="android:layout_marginEnd">@dimen/margin_button_from_parent_normal</item>
+        <item name="android:layout_marginTop">24dp</item>
+    </style>
+
+    <style name="TextViewGameBase">
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">46sp</item>
+        <item name="android:layout_margin">12dp</item>
+        <item name="android:padding">16dp</item>
+    </style>
+
+    <style name="TextViewGameOptions">
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">36sp</item>
+        <item name="android:padding">16dp</item>
+        <item name="android:layout_columnWeight">1</item>
+        <item name="android:text">5</item>
+    </style>
+
+    <style name="TextViewGameFinished">
+        <item name="android:layout_margin">20dp</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">italic</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+
+</resources>
