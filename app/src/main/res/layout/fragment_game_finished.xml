@@ -18,6 +18,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed"
+        android:src="@drawable/smile"
         tools:srcCompat="@drawable/smile" />
 
     <TextView
@@ -28,7 +29,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ivEmojiResult"
-        tools:text="@string/required_answers_count" />
+        android:text="@string/required_answers_count" />
 
     <TextView
         android:id="@+id/tvScore"
@@ -38,7 +39,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvRequiredAnswers"
-        tools:text="@string/score" />
+        android:text="@string/score" />
 
     <TextView
         android:id="@+id/tvRequiredPercentage"
@@ -48,7 +49,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvScore"
-        tools:text="@string/required_answers_percentage" />
+        android:text="@string/required_answers_percentage" />
 
     <TextView
         android:id="@+id/tvScorePercentage"
@@ -58,7 +59,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvRequiredPercentage"
-        tools:text="@string/right_answers_percentage" />
+        android:text="@string/right_answers_percentage" />
 
     <Button
         android:id="@+id/btnTryAgain"
