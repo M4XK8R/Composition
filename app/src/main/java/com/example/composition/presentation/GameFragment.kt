@@ -103,7 +103,6 @@ class GameFragment : Fragment() {
         }
         viewModel.progressAnswersLd.observe(viewLifecycleOwner) {
             binding.tvCountOfRightAnswers.text = it
-//                String().format("%s", it)
         }
     }
 
