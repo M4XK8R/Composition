@@ -39,10 +39,11 @@ class GameFinishedFragment : Fragment() {
 
     // PRIVATE FUNCTIONS
     private fun showGameResult() {
+        binding.gameResult = args.gameResult
         setCorrectImage(gameResult.winner)
-        showRequiredAmountOfRightAnswers()
-        showYourAmountOfRightAnswers()
-        showRequiredPercentOfRightAnswers()
+//        showRequiredAmountOfRightAnswers()
+//        showYourAmountOfRightAnswers()
+//        showRequiredPercentOfRightAnswers()
         showYourPercentOfRightAnswers()
     }
 
