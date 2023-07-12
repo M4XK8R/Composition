@@ -2,7 +2,6 @@ package com.example.composition.presentation
 
 import android.app.Application
 import android.os.CountDownTimer
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -88,7 +87,7 @@ class GameViewModel(
         val percentOfRightAnswers = calculatePercentOfRightAnswers()
         _percentOfRightAnswer.value = percentOfRightAnswers
         val progressInfo = String.format(
-            application.resources.getString(R.string.right_answers_amount),
+            application.resources.getString(R.string.your_and_minimum_correct_answers_amount),
             countOfRightAnswers,
             gameSettings.minCountOfRightAnswers
         )
