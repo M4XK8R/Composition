@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
 
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.composition.presentation.GameViewModel" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
@@ -13,6 +20,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
+            android:text="@{viewModel.formattedTimeLd}"
             android:textSize="28sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -36,6 +44,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/guidelineTop"
+            app:numberToStringAdapter="@{viewModel.questionLd.sum}"
             tools:text="10" />
 
         <TextView
@@ -49,6 +58,7 @@
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvSum"
+            app:numberToStringAdapter="@{viewModel.questionLd.visibleNumber}"
             tools:text="7" />
 
         <TextView
@@ -69,11 +79,13 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="38dp"
             android:gravity="center"
-            android:text="@string/your_and_minimum_correct_answers_amount"
+            android:text="@{viewModel.correctAnswersInfoLd}"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvRightNumber" />
+            app:layout_constraintTop_toBottomOf="@id/tvRightNumber"
+            app:textViewColorAdapter="@{viewModel.isEnoughCountOfRightAnswersLd}"
+            tools:text="@string/your_and_minimum_correct_answers_amount" />
 
         <ProgressBar
             android:id="@+id/progressBar"
@@ -82,9 +94,12 @@
             android:layout_height="wrap_content"
             android:layout_margin="12dp"
             android:max="100"
+            android:progress="@{viewModel.currentPercentOfRightAnswersLd}"
+            android:secondaryProgress="@{viewModel.minPercentLd}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvCountOfRightAnswers" />
+            app:layout_constraintTop_toBottomOf="@id/tvCountOfRightAnswers"
+            app:progressBarColorAdapter="@{viewModel.isEnoughPercentOfRightAnswersLd()}" />
 
         <GridLayout
             android:layout_width="match_parent"
@@ -98,35 +113,47 @@
             <TextView
                 android:id="@+id/tvOption1"
                 style="@style/TextViewGameOptions"
-                android:background="@color/color_grey_start" />
+                android:background="@color/color_grey_start"
+                android:text="@{viewModel.questionLd.options.get(0).toString()}"
+                app:onOptionClickListenerBa="@{(option)-> viewModel.chooseAnswer(option)}" />
 
             <TextView
                 android:id="@+id/tvOption2"
                 style="@style/TextViewGameOptions"
-                android:background="#BFC1B9B9" />
+                android:background="#BFC1B9B9"
+                android:text="@{viewModel.questionLd.options.get(1).toString()}"
+                app:onOptionClickListenerBa="@{(option)-> viewModel.chooseAnswer(option)}" />
 
             <TextView
                 android:id="@+id/tvOption3"
                 style="@style/TextViewGameOptions"
-                android:background="#C1B9B9" />
+                android:background="#C1B9B9"
+                android:text="@{viewModel.questionLd.options.get(2).toString()}"
+                app:onOptionClickListenerBa="@{(option)-> viewModel.chooseAnswer(option)}" />
 
             <TextView
                 android:id="@+id/tvOption4"
                 style="@style/TextViewGameOptions"
                 android:background="@color/color_grey_second"
-                android:textColor="@color/white" />
+                android:text="@{viewModel.questionLd.options.get(3).toString()}"
+                android:textColor="@color/white"
+                app:onOptionClickListenerBa="@{(option)-> viewModel.chooseAnswer(option)}" />
 
             <TextView
                 android:id="@+id/tvOption5"
                 style="@style/TextViewGameOptions"
                 android:background="#A6575353"
-                android:textColor="@color/white" />
+                android:text="@{viewModel.questionLd.options.get(4).toString()}"
+                android:textColor="@color/white"
+                app:onOptionClickListenerBa="@{(option)-> viewModel.chooseAnswer(option)}" />
 
             <TextView
                 android:id="@+id/tvOption6"
                 style="@style/TextViewGameOptions"
                 android:background="#BD575353"
-                android:textColor="@color/white" />
+                android:text="@{viewModel.questionLd.options.get(5).toString()}"
+                android:textColor="@color/white"
+                app:onOptionClickListenerBa="@{(option)-> viewModel.chooseAnswer(option)}" />
 
         </GridLayout>
 
