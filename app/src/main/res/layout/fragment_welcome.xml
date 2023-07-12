@@ -1,53 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fillViewport="true">
+<layout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:context=".presentation.WelcomeFragment">
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
-        <ImageView
-            android:id="@+id/ivLogo"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_margin="32dp"
-            android:contentDescription="@string/welcome_logo"
-            android:src="@drawable/brain"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/tvTitle"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/margin_tv_default"
-            android:text="@string/count"
-            android:textSize="24sp"
-            app:layout_constraintTop_toBottomOf="@+id/ivLogo" />
+            tools:context=".presentation.WelcomeFragment">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/margin_tv_default"
-            android:justificationMode="inter_word"
-            android:text="@string/lorem_ipsum"
-            android:textSize="20sp"
-            app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+            <ImageView
+                android:id="@+id/ivLogo"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_margin="32dp"
+                android:contentDescription="@string/welcome_logo"
+                android:src="@drawable/brain"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/btnUnderstand"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="16sp"
-            android:text="@string/agree"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_tv_default"
+                android:text="@string/count"
+                android:textSize="24sp"
+                app:layout_constraintTop_toBottomOf="@+id/ivLogo" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_tv_default"
+                android:justificationMode="inter_word"
+                android:text="@string/lorem_ipsum"
+                android:textSize="20sp"
+                app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+
+            <Button
+                android:id="@+id/btnUnderstand"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/agree"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</layout>

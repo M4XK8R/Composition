@@ -2,7 +2,6 @@ package com.example.composition.presentation
 
 import android.app.Application
 import android.os.CountDownTimer
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -38,17 +37,17 @@ class GameViewModel(
     private val _question = MutableLiveData<Question>()
     val questionLd: LiveData<Question> get() = _question
 
-    private val _percentOfRightAnswer = MutableLiveData<Int>()
-    val percentOfRightAnswerLd: LiveData<Int> get() = _percentOfRightAnswer
+    private val _currentPercentOfRightAnswers = MutableLiveData<Int>()
+    val currentPercentOfRightAnswersLd: LiveData<Int> get() = _currentPercentOfRightAnswers
 
-    private val _progressAnswers = MutableLiveData<String>()
-    val progressAnswersLd: LiveData<String> get() = _progressAnswers
+    private val _correctAnswersInfo = MutableLiveData<String>()
+    val correctAnswersInfoLd: LiveData<String> get() = _correctAnswersInfo
 
     private val _isEnoughCountOfRightAnswers = MutableLiveData<Boolean>()
     val isEnoughCountOfRightAnswersLd: LiveData<Boolean> get() = _isEnoughCountOfRightAnswers
 
-    private val _enoughPercentOfRightAnswers = MutableLiveData<Boolean>()
-    val enoughPercentOfRightAnswersLd: LiveData<Boolean> get() = _enoughPercentOfRightAnswers
+    private val _isEnoughPercentOfRightAnswers = MutableLiveData<Boolean>()
+    val isEnoughPercentOfRightAnswersLd: LiveData<Boolean> get() = _isEnoughPercentOfRightAnswers
 
     private val _minPercent = MutableLiveData<Int>()
     val minPercentLd: LiveData<Int> get() = _minPercent
@@ -86,17 +85,18 @@ class GameViewModel(
     }
     private fun updateProgress() {
         val percentOfRightAnswers = calculatePercentOfRightAnswers()
-        _percentOfRightAnswer.value = percentOfRightAnswers
+        _currentPercentOfRightAnswers.value = percentOfRightAnswers
         val progressInfo = String.format(
-            application.resources.getString(R.string.right_answers_amount),
+            application.resources.getString(R.string.your_and_minimum_correct_answers_amount),
             countOfRightAnswers,
-            gameSettings.minCountOfRightAnswers
+            gameSettings.minCountOfCorrectAnswers
         )
-        _progressAnswers.value = progressInfo
+        _correctAnswersInfo.value = progressInfo
+
         _isEnoughCountOfRightAnswers.value =
-            countOfRightAnswers >= gameSettings.minCountOfRightAnswers
-        _enoughPercentOfRightAnswers.value =
-            percentOfRightAnswers >= gameSettings.minPercentOfRightAnswers
+            countOfRightAnswers >= gameSettings.minCountOfCorrectAnswers
+        _isEnoughPercentOfRightAnswers.value =
+            percentOfRightAnswers >= gameSettings.minPercentOfCorrectAnswers
     }
 
     private fun calculatePercentOfRightAnswers(): Int {
@@ -116,7 +116,7 @@ class GameViewModel(
 
     private fun finishGame() {
         _gameResult.value = GameResult(
-            isEnoughCountOfRightAnswersLd.value == true && enoughPercentOfRightAnswersLd.value == true,
+            isEnoughCountOfRightAnswersLd.value == true && isEnoughPercentOfRightAnswersLd.value == true,
             countOfRightAnswers,
             countOfQuestions,
             gameSettings
@@ -125,7 +125,7 @@ class GameViewModel(
 
     private fun getGameSettings() {
         this.gameSettings = getGameSettingsUseCase(level)
-        _minPercent.value = gameSettings.minPercentOfRightAnswers
+        _minPercent.value = gameSettings.minPercentOfCorrectAnswers
     }
 
     private fun formatTime(millis: Long): String {

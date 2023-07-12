@@ -5,10 +5,13 @@ import kotlinx.parcelize.Parcelize
 
 
 @Parcelize
-data class GameResult (
-    val winner: Boolean,
-    val countOfRightAnswers: Int,
+data class GameResult(
+    val isWinner: Boolean,
+    val countOfCorrectAnswers: Int,
     val countOfQuestions: Int,
     val gameSettings: GameSettings
-) : Parcelable
+) : Parcelable {
+    val yourPercentageOfCorrectAnswers
+        get() = ((countOfCorrectAnswers.toDouble() / countOfQuestions) * 100).toInt()
+}
 

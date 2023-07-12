@@ -1,73 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".presentation.GameFinishedFragment">
+<layout>
 
-    <ImageView
-        android:id="@+id/ivEmojiResult"
+    <data>
+
+        <variable
+            name="gameResult"
+            type="com.example.composition.domain.entity.GameResult" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="210dp"
-        android:layout_margin="18dp"
-        android:contentDescription="@string/game_over"
-        app:layout_constraintBottom_toTopOf="@+id/tvRequiredAnswers"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed"
-        android:src="@drawable/upset"
-        tools:srcCompat="@drawable/smile" />
+        android:layout_height="match_parent"
+        tools:context=".presentation.GameFinishedFragment">
 
-    <TextView
-        android:id="@+id/tvRequiredAnswers"
-        style="@style/TextViewGameFinished"
-        app:layout_constraintBottom_toTopOf="@+id/tvScore"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivEmojiResult"
-        android:text="@string/required_answers_count" />
+        <ImageView
+            android:id="@+id/ivEmojiResult"
+            android:layout_width="match_parent"
+            android:layout_height="210dp"
+            android:layout_margin="18dp"
+            android:contentDescription="@string/game_over"
+            android:src="@drawable/upset"
+            app:resultEmoji="@{gameResult.winner}"
+            app:layout_constraintBottom_toTopOf="@+id/tvRequiredAnswers"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:srcCompat="@drawable/smile" />
 
-    <TextView
-        android:id="@+id/tvScore"
-        style="@style/TextViewGameFinished"
-        app:layout_constraintBottom_toTopOf="@+id/tvRequiredPercentage"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvRequiredAnswers"
-        android:text="@string/score" />
+        <TextView
+            tools:text="@string/required_correct_answers_amount"
+            android:id="@+id/tvRequiredAnswers"
+            style="@style/TextViewGameFinished"
+            app:layout_constraintBottom_toTopOf="@+id/tvScore"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ivEmojiResult"
+            app:requiredAmountOfRightAnswers="@{gameResult.gameSettings.minCountOfCorrectAnswers}" />
 
-    <TextView
-        android:id="@+id/tvRequiredPercentage"
-        style="@style/TextViewGameFinished"
-        app:layout_constraintBottom_toTopOf="@+id/tvScorePercentage"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvScore"
-        android:text="@string/required_answers_percentage" />
+        <TextView
+            android:id="@+id/tvScore"
+            tools:text="@string/score"
+            style="@style/TextViewGameFinished"
+            app:layout_constraintBottom_toTopOf="@+id/tvRequiredPercentage"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvRequiredAnswers"
+            app:yourScore="@{gameResult.countOfCorrectAnswers}" />
 
-    <TextView
-        android:id="@+id/tvScorePercentage"
-        style="@style/TextViewGameFinished"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvRequiredPercentage"
-        android:text="@string/right_answers_percentage" />
+        <TextView
+            tools:text="@string/required_percentage_of_correct_answers"
+            android:id="@+id/tvRequiredPercentage"
+            style="@style/TextViewGameFinished"
+            app:layout_constraintBottom_toTopOf="@+id/tvScorePercentage"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvScore"
+            app:minPercentOfRightAnswers="@{gameResult.gameSettings.minPercentOfCorrectAnswers}" />
 
-    <Button
-        android:id="@+id/btnTryAgain"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="2dp"
-        android:text="@string/try_again"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        <TextView
+            tools:text="@string/percentage_of_correct_answers"
+            android:id="@+id/tvScorePercentage"
+            style="@style/TextViewGameFinished"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvRequiredPercentage"
+            app:yourPercentageOfCorrectAnswers="@{gameResult.yourPercentageOfCorrectAnswers}" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            android:id="@+id/btnTryAgain"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:text="@string/try_again"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

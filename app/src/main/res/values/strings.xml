@@ -1,21 +1,28 @@
 <resources>
     <string name="app_name">Composition</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--    WELCOME FRAGMENT -->
     <string name="welcome_logo">Welcome logo</string>
     <string name="count">Состав числа</string>
     <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</string>
     <string name="agree">ПОНЯТНО</string>
+
+    <!--    CHOOSE LEVEL FRAGMENT -->
     <string name="choose_level">Выберите уровень</string>
     <string name="test">Тестовый</string>
     <string name="easy">Легкий</string>
     <string name="normal">Средний</string>
     <string name="hard">Тяжелый</string>
-    <string name="right_answers_amount">Правильных ответов %s (минимум %s)</string>
+
+    <!--    GAME FRAGMENT-->
+    <string name="your_and_minimum_correct_answers_amount">Правильных ответов %s (минимум %s)</string>
     <string name="game_over">Game Over</string>
-    <string name="required_answers_count">Необходимое количество правильных ответов: %s</string>
+
+    <!--    GAME FINISHED FRAGMENT-->
+    <string name="required_correct_answers_amount">Необходимое количество правильных ответов: %s</string>
     <string name="score">Ваш счет: %s</string>
-    <string name="required_answers_percentage">Необходимый процент правильных ответов: %s</string>
-    <string name="right_answers_percentage">Процент правильных ответов: %s</string>
+    <string name="required_percentage_of_correct_answers">Необходимый процент правильных ответов: %s</string>
+    <string name="percentage_of_correct_answers">Процент правильных ответов: %s</string>
+
     <string name="try_again">Попробовать снова</string>
 </resources>
